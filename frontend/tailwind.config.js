@@ -8,11 +8,11 @@ export default {
     extend: {
       colors: {
         pastel: {
-          pink: '#FFD6E8',
-          blue: '#C3E5FF',
-          purple: '#E5D4FF',
-          yellow: '#FFF6D4',
-          green: '#D4FFE5',
+          pink: '#ec4899',
+          blue: '#6366f1',
+          purple: '#7c3aed',
+          yellow: '#facc15',
+          green: '#22c55e',
         }
       }
     },

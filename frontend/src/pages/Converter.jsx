@@ -112,20 +112,23 @@ const Converter = () => {
   return (
     <div className="min-h-screen p-4 flex flex-col">
       <Link
-        to="/"
-        className="text-white mb-6 inline-flex items-center gap-2 hover:opacity-80"
+        to="/home"
+        className="text-gray-700 mb-6 inline-flex items-center gap-2 hover:text-gray-900 transition-colors"
       >
         <span className="text-2xl">←</span> Back
       </Link>
 
       <div className="max-w-2xl w-full mx-auto flex-1 flex flex-col">
-        <div className="bg-white/95 rounded-3xl shadow-2xl p-8 flex-1 flex flex-col">
-          <h1 className="text-3xl font-bold text-center mb-2 text-gray-800">
-            Message Converter 🌐
-          </h1>
-          <p className="text-center text-gray-600 mb-8">
-            Speak or type to translate
-          </p>
+        <div className="bento flex-1 flex flex-col">
+          {/* Header */}
+          <div className="bg-sage border-2 border-sage rounded-2xl p-6 mb-6">
+            <h1 className="text-3xl font-bold text-center text-sage-dark">
+              Message Converter 🌍
+            </h1>
+            <p className="text-center text-gray-700 mt-2">
+              Speak or type to translate
+            </p>
+          </div>
 
           {/* Input Section */}
           <div className="space-y-4 flex-1 flex flex-col">
@@ -134,17 +137,17 @@ const Converter = () => {
                 value={text}
                 onChange={(e) => setText(e.target.value)}
                 placeholder="Type your message or tap the mic..."
-                className="flex-1 p-4 border-2 border-gray-200 rounded-2xl text-lg resize-none focus:outline-none focus:border-purple-400 transition-colors"
+                className="flex-1 p-4 border-2 border-gray-200 rounded-2xl text-lg resize-none focus:outline-none focus:border-sage transition-colors bg-white"
                 rows="4"
               />
               {recognition && (
                 <button
                   onClick={startListening}
                   disabled={isListening}
-                  className={`w-20 h-20 rounded-full flex items-center justify-center text-4xl transition-all shadow-lg ${
+                  className={`w-20 h-20 rounded-full flex items-center justify-center text-4xl transition-all shadow-md border-2 ${
                     isListening
-                      ? 'bg-red-400 animate-pulse'
-                      : 'bg-gradient-to-br from-purple-400 to-pink-400 hover:scale-105 active:scale-95'
+                      ? 'bg-rose border-rose animate-pulse'
+                      : 'bg-sage border-sage hover:scale-105 active:scale-95'
                   }`}
                 >
                   {isListening ? '⏸️' : '🎤'}
@@ -156,7 +159,7 @@ const Converter = () => {
             <select
               value={language}
               onChange={(e) => setLanguage(e.target.value)}
-              className="w-full p-4 border-2 border-gray-200 rounded-2xl text-lg font-medium focus:outline-none focus:border-purple-400 transition-colors bg-white"
+              className="w-full p-4 border-2 border-gray-200 rounded-2xl text-lg font-medium focus:outline-none focus:border-sage transition-colors bg-white"
             >
               {languages.map((lang) => (
                 <option key={lang} value={lang}>
@@ -169,14 +172,14 @@ const Converter = () => {
             <button
               onClick={handleConvert}
               disabled={!text.trim() || loading}
-              className="w-full py-5 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xl font-bold rounded-2xl disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-xl transition-all active:scale-95"
+              className="w-full py-5 bg-sage text-sage-dark border-2 border-sage text-xl font-bold rounded-2xl disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#C4D9C4] transition-all active:scale-95"
             >
               {loading ? 'Converting...' : 'Convert 🚀'}
             </button>
 
             {/* Result Section */}
             {result && (
-              <div className="mt-6 p-6 bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl border-2 border-purple-200">
+              <div className="mt-6 p-6 bg-mint border-2 border-[#C4E5D4] rounded-2xl">
                 <p className="text-xl text-gray-800 mb-4 leading-relaxed">
                   {result}
                 </p>
@@ -184,19 +187,19 @@ const Converter = () => {
                 <div className="flex gap-3 flex-wrap">
                   <button
                     onClick={handleCopy}
-                    className="px-6 py-3 bg-white rounded-xl shadow hover:shadow-lg transition-shadow font-medium text-gray-700 flex items-center gap-2"
+                    className="px-6 py-3 bg-white border-2 border-gray-200 rounded-xl hover:border-gray-300 transition-colors font-medium text-gray-700 flex items-center gap-2"
                   >
                     📋 Copy
                   </button>
                   <button
                     onClick={handleSpeak}
-                    className="px-6 py-3 bg-white rounded-xl shadow hover:shadow-lg transition-shadow font-medium text-gray-700 flex items-center gap-2"
+                    className="px-6 py-3 bg-white border-2 border-gray-200 rounded-xl hover:border-gray-300 transition-colors font-medium text-gray-700 flex items-center gap-2"
                   >
                     🔊 Play
                   </button>
                   <button
                     onClick={handleShare}
-                    className="px-6 py-3 bg-white rounded-xl shadow hover:shadow-lg transition-shadow font-medium text-gray-700 flex items-center gap-2"
+                    className="px-6 py-3 bg-white border-2 border-gray-200 rounded-xl hover:border-gray-300 transition-colors font-medium text-gray-700 flex items-center gap-2"
                   >
                     📤 Share
                   </button>

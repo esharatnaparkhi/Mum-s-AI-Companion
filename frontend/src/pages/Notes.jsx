@@ -70,22 +70,25 @@ const Notes = () => {
   }
 
   return (
-    <div className="min-h-screen p-4 flex flex-col">
-      <Link
-        to="/"
-        className="text-white mb-6 inline-flex items-center gap-2 hover:opacity-80"
+    <div className="p-4 flex flex-col">
+      <Link 
+        to="/home" 
+        className="text-gray-700 mb-6 inline-flex items-center gap-2 hover:text-gray-900 transition-colors"
       >
         <span className="text-2xl">←</span> Back
       </Link>
 
-      <div className="max-w-2xl w-full mx-auto flex-1 flex flex-col">
-        <div className="bg-white/95 rounded-3xl shadow-2xl p-8 flex-1 flex flex-col">
-          <h1 className="text-3xl font-bold text-center mb-2 text-gray-800">
-            Notes & Reminder 📝
-          </h1>
-          <p className="text-center text-gray-600 mb-8">
-            Save a note and get a WhatsApp reminder in 30 minutes
-          </p>
+      <div className="max-w-2xl w-full mx-auto">
+        <div className="bento flex flex-col">
+          {/* Header */}
+          <div className="bg-butter border-2 border-butter rounded-2xl p-6 mb-6">
+            <h1 className="text-3xl font-bold text-center text-butter-dark">
+              Notes & Reminder 📝
+            </h1>
+            <p className="text-center text-gray-700 mt-2">
+              Save a note and get a WhatsApp reminder in 30 minutes
+            </p>
+          </div>
 
           <div className="space-y-6 flex-1 flex flex-col">
             {/* Note Input */}
@@ -97,7 +100,7 @@ const Notes = () => {
                 value={note}
                 onChange={(e) => setNote(e.target.value)}
                 placeholder="Write a quick note... (e.g., 'Call doctor', 'Buy groceries', 'Take medicine')"
-                className="flex-1 p-4 border-2 border-gray-200 rounded-2xl text-lg resize-none focus:outline-none focus:border-purple-400 transition-colors min-h-[150px]"
+                className="flex-1 p-4 border-2 border-gray-200 rounded-2xl text-lg resize-none focus:outline-none focus:border-butter transition-colors min-h-[150px] bg-white"
               />
             </div>
 
@@ -114,7 +117,7 @@ const Notes = () => {
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 placeholder="+91 9876543210"
-                className="w-full p-4 border-2 border-gray-200 rounded-2xl text-lg focus:outline-none focus:border-purple-400 transition-colors"
+                className="w-full p-4 border-2 border-gray-200 rounded-2xl text-lg focus:outline-none focus:border-butter transition-colors bg-white"
               />
               <p className="text-sm text-gray-500 mt-2">
                 Example: +91 for India, +1 for US, +44 for UK
@@ -127,7 +130,7 @@ const Notes = () => {
                 type="checkbox"
                 checked={consent}
                 onChange={(e) => setConsent(e.target.checked)}
-                className="mt-1 w-5 h-5 text-purple-500 rounded focus:ring-purple-400"
+                className="mt-1 w-5 h-5 rounded focus:ring-butter accent-[#D4A84F]"
               />
               <span className="text-gray-700">
                 I consent to receive one WhatsApp reminder per note saved
@@ -138,26 +141,26 @@ const Notes = () => {
             <button
               onClick={handleSave}
               disabled={!note.trim() || !phone.trim() || !consent || loading}
-              className="w-full py-5 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xl font-bold rounded-2xl disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-xl transition-all active:scale-95"
+              className="w-full py-5 bg-butter border-2 border-butter text-butter-dark text-xl font-bold rounded-2xl disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#FFE8C4] transition-all active:scale-95"
             >
               {loading ? 'Saving...' : 'Save & Remind me in 30 min ⏰'}
             </button>
 
             {/* Success Message */}
             {success && (
-              <div className="p-4 bg-green-50 border-2 border-green-200 rounded-2xl">
-                <p className="text-green-800 font-medium text-center">
+              <div className="p-4 bg-mint border-2 border-[#C4E5D4] rounded-2xl">
+                <p className="text-gray-800 font-medium text-center">
                   {success.message}
                 </p>
-                <p className="text-green-600 text-sm text-center mt-1">
+                <p className="text-gray-600 text-sm text-center mt-1">
                   Note ID: {success.noteId}
                 </p>
               </div>
             )}
 
             {/* Info Box */}
-            <div className="p-4 bg-blue-50 border-2 border-blue-200 rounded-2xl">
-              <p className="text-blue-800 text-sm">
+            <div className="p-4 bg-sky border-2 border-sky rounded-2xl">
+              <p className="text-gray-800 text-sm">
                 <strong>💡 How it works:</strong> Your note will be saved, and
                 you'll receive a WhatsApp message in exactly 30 minutes with your
                 reminder. Make sure WhatsApp is installed and your number is

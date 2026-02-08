@@ -1,5 +1,8 @@
+// src/App.jsx
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import BirthdayWish from './pages/BirthdayWish'
+import BirthdayPage from './pages/BirthdayPage'
 import Home from './pages/Home'
 import Converter from './pages/Converter'
 import Surprise from './pages/Surprise'
@@ -9,13 +12,22 @@ import Notes from './pages/Notes'
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-gradient-to-br from-pastel-blue via-pastel-purple to-pastel-pink">
+      {/* MAIN APP BACKGROUND – Modern Clean Theme */}
+      <div className="min-h-screen bg-[#F5F5F0]">
         <Routes>
-          <Route path="/" element={<Home />} />
+          {/* Birthday Flow - Landing Pages */}
+          <Route path="/" element={<BirthdayWish />} />
+          <Route path="/birthday" element={<BirthdayPage />} />
+
+          {/* Main Tools Section */}
+          <Route path="/home" element={<Home />} />
           <Route path="/converter" element={<Converter />} />
           <Route path="/surprise" element={<Surprise />} />
           <Route path="/chat" element={<Chat />} />
           <Route path="/notes" element={<Notes />} />
+
+          {/* Fallback - redirect to landing */}
+          <Route path="*" element={<BirthdayWish />} />
         </Routes>
       </div>
     </Router>
